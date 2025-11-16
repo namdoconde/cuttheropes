@@ -11,7 +11,11 @@ const APP_VERSION = "4";
 
 export default defineConfig(({ mode }) => {
     const isDev = mode === "development";
-    const base = process.env.VITE_BASE_NETLIFY || (isDev ? "/" : "/cuttherope-h5dx");
+    
+    // ĐÃ SỬA: Đặt Base Path là "/" cho Production (Cloudflare Pages) 
+    // để các file được load từ thư mục gốc của subdomain (.pages.dev).
+    const base = process.env.VITE_BASE_NETLIFY || (isDev ? "/" : "/"); 
+    
     const enablePWA = !process.env.VITE_BASE_NETLIFY;
 
     return {
